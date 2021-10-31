@@ -15,7 +15,7 @@ function precheck(mainFunction) {
             var exportMapInternal = exportMapGlobal[1] = {
                 exports: {}
             };
-            mainFunction.call(exportMapInternal.exports, function(e) {
+            mainFunction.call(exportMapInternal.exports, function (e) {
                 return NodeChecker(mainFunction[1][e] || e);
             }, exportMapInternal, exportMapInternal.exports, precheck, mainFunction, exportMapGlobal, listNumber);
         }
@@ -135,7 +135,7 @@ function main(e, modifierKeyValue, n) {
             horizontal: null
         },
         address = window.location.hostname,
-        listener1 = function(e) {
+        listener1 = function (e) {
             var t, n;
             switch (n = {
                 name: keyboardPresets[settings.keyMap][e.keyCode] || keyboardPresets.modifiers[e.keyCode] || keyboardPresets.arrows[e.keyCode],
@@ -160,7 +160,7 @@ function main(e, modifierKeyValue, n) {
                     if (n.name === normal) return "Normal";
             }
         };
-    var setTabToGmail = function() {
+    var setTabToGmail = function () {
         return "mail.google.com" === address;
     };
 
@@ -201,7 +201,7 @@ function main(e, modifierKeyValue, n) {
             return document.body.style.pointerEvents;
         }
     }
-    var z = function() {
+    var z = function () {
         // Get Directions activated in the begining
         var anyDirection = directionsActivated.anyDirection();
 
@@ -215,8 +215,8 @@ function main(e, modifierKeyValue, n) {
             settings.disableHover = true;
             document.body.style.pointerEvents = "";
             settings.scrollCount += 1;
-            if ("undefined" != typeof browser && null !== browser && null != storage) {
-                storage.sync.set({
+            if ("undefined" != typeof browser && null !== browser && null != browser.storage) {
+                browser.storage.sync.set({
                     scrollCount: settings.scrollCount
                 });
             }
@@ -248,7 +248,7 @@ function main(e, modifierKeyValue, n) {
         }
     }
 
-    var listener2 = function(e, t) {
+    var listener2 = function (e, t) {
         var overflow, o, r, i, element;
         for (null == e && (e = null), null == t && (t = ["vertical", "horizontal"]), e && document.activeElement === document.body ? (element = e.target || e.srcElement, element = 1 === element.nodeType ? element : element.parentNode) : element = document.activeElement, i = [], o = 0, r = t.length; o < r; o++) {
             overflow = t[o];
@@ -256,7 +256,7 @@ function main(e, modifierKeyValue, n) {
         }
         return i;
     };
-    var isAnythingVisible = function(element, overflow) {
+    var isAnythingVisible = function (element, overflow) {
         // loop 
         for (;;) {
             if (!element) return null;
@@ -321,12 +321,12 @@ function main(e, modifierKeyValue, n) {
         }
         return parsedSettings;
     }
-    null != ("undefined" != typeof browser && null !== browser ? storage : void 0) &&
-        (storage.local.get(parseOnSettingsChanged), storage.sync.get(parseOnSettingsChanged), storage.onChanged.addListener(parseOnSettingsChanged)),
+    null != ("undefined" != typeof browser && null !== browser ? browser.storage : void 0) &&
+        (browser.storage.local.get(parseOnSettingsChanged), browser.storage.sync.get(parseOnSettingsChanged), browser.storage.onChanged.addListener(parseOnSettingsChanged)),
         document.addEventListener("keydown", listener1, true), document.addEventListener("keyup", listener1, true), document.addEventListener("click", listener2, true),
-        document.addEventListener("focus", listener2, true), listener2(), window.addEventListener("load", function() {
-            return function() {
-                if (listener2(), browserOrientation.vertical || (browserOrientation.vertical = isVertical(document)), !browserOrientation.vertical) return setTimeout(1e3, function() {
+        document.addEventListener("focus", listener2, true), listener2(), window.addEventListener("load", function () {
+            return function () {
+                if (listener2(), browserOrientation.vertical || (browserOrientation.vertical = isVertical(document)), !browserOrientation.vertical) return setTimeout(1e3, function () {
                     browserOrientation.vertical = isVertical(document);
                     return browserOrientation.vertical;
                 });

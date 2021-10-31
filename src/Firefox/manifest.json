@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Smooth Key Scrolling",
-    "version": "1.0",
+    "version": "1.2",
     "description": "Binds Smooth Scrolling to Keyboard Shortcuts",
     "browser_action": {
         "default_icon": {
@@ -34,5 +34,5 @@
         "scripts": ["js/eventPage.js"]
     },
     "permissions": ["storage", "tabs", "http://*/", "https://*/"],
-    "content_security_policy": "script-src 'self' https://www.coinbase.com/assets/button.js http://localhost:35729 http://localhost:48626/takana.js 'unsafe-eval'; object-src 'self'"
+    "content_security_policy": "script-src 'self' https://www.coinbase.com/assets/button.js https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js http://localhost:35729 http://localhost:48626/takana.js 'unsafe-eval'; object-src 'self'"
 }
