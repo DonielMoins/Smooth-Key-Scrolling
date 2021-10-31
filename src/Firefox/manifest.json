@@ -2,15 +2,24 @@
     "manifest_version": 2,
     "name": "Smooth Key Scrolling",
     "version": "1.0",
-
+    "offline_enabled": true,
     "description": "Binds Smooth Scrolling to Keyboard Shortcuts",
 
     "icons": {
-        "48": "icons/placeholder-48.png"
+        "128": "img/icon128.png",
+        "48": "img/icon48.png",
+        "16": "img/icon16.png"
     },
 
     "content_scripts": [{
-        "matches": ["*://*/*"],
-        "js": ["SKS.js"]
-    }]
+        "matches": ["<all_urls>"],
+        "js": ["js/content.js"],
+        "all_frames": true,
+        "run_at": "document_end"
+    }],
+    "background": {
+        "scripts": ["lib/mixpanel.js", "js/eventPage.js"],
+        "persistent": false
+    },
+    "permissions": ["storage", "tabs"]
 }
