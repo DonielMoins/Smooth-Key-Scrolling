@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "Smooth Key Scrolling",
+    "version": "1.0",
+
+    "description": "Binds Smooth Scrolling to Keyboard Shortcuts",
+
+    "icons": {
+        "48": "icons/placeholder-48.png"
+    },
+
+    "content_scripts": [{
+        "matches": ["*://*/*"],
+        "js": ["SKS.js"]
+    }]
+}
